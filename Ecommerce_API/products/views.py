@@ -28,14 +28,14 @@ class ProductList(generics.ListCreateAPIView):
         in_stock = self.request.query_params.get('in_stock', None)
 
         if name:
-            queryset = queryset.filter(name__icontains=name)  # Partial match for name
+            queryset = queryset.filter(name__icontains=name)  # Shows partial match for name
         if category:
-            queryset = queryset.filter(category__name__icontains=category)  # Assuming category is a ForeignKey
+            queryset = queryset.filter(category__name__icontains=category)  # Queryset for category filter
         if price_min is not None:
-            queryset = queryset.filter(price__gte=price_min)
+            queryset = queryset.filter(price__gte=price_min) #Price range filter
         if price_max is not None:
             queryset = queryset.filter(price__lte=price_max)
-        if in_stock is not None:
+        if in_stock is not None:                          # Stock availability filter
             queryset = queryset.filter(stock_quantity__gt=0)
 
         return queryset
