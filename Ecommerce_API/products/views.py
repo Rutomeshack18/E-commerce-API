@@ -9,6 +9,10 @@ from .models import CustomUser
 from .permissions import IsAuthenticatedOrReadOnly
 
 #User registerview to allow users to register
+#Homepage for my API
+def home(request):
+    return render(request, 'base.html')
+
 class UserRegister(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer

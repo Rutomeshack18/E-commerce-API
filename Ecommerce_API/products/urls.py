@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import ProductList, ProductDetail
-from .views import UserRegister
+from .views import UserRegister, home
 #Urlls for the views in views.py
 urlpatterns = [
     path('products/', ProductList.as_view(), name='product-list'),  # Public listing
